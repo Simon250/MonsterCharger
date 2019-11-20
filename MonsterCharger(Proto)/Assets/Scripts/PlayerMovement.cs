@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Camera main;
         characterController = GetComponent<CharacterController>();
     }
 
@@ -23,8 +24,19 @@ public class PlayerMovement : MonoBehaviour
         {
             // We are grounded, so recalculate
             // move direction directly from axes
+            var camera = Camera.main;
 
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            //camera forward and right vectors:
+            var forward = camera.transform.forward;
+            var right = camera.transform.right;
+
+            //project forward and right vectors on the horizontal plane (y = 0)
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
+
+            moveDirection = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
             moveDirection *= speed;
 
             if (Input.GetButton("Jump"))
@@ -40,5 +52,10 @@ public class PlayerMovement : MonoBehaviour
 
         // Move the controller
         characterController.Move(moveDirection * Time.deltaTime);
+
+        float x = 5 * Input.GetAxis("Mouse X");
+        float y = 5 * -Input.GetAxis("Mouse Y");
+        Camera.main.transform.Rotate(0, x, 0);
     }
+
 }
