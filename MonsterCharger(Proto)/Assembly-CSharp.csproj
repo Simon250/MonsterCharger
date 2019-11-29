@@ -57,6 +57,7 @@
   <ItemGroup>
      <Compile Include="Assets\8K Skybox Pack Free\Example Scenes\Script\RotateCamera.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <None Include="Assets\SimpleSky\ReadMe.txt" />
      <None Include="Assets\StylizedWoodVol01\Shaders\StandardTesselated.shader" />
      <None Include="Assets\8K Skybox Pack Free\ReadMe.txt" />
  <Reference Include="Unity.Timeline.Editor">

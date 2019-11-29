@@ -10,12 +10,16 @@ public class PlayerMovement : MonoBehaviour
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
 
+   
+
     private Vector3 moveDirection = Vector3.zero;
+    
 
     void Start()
     {
         Camera main;
         characterController = GetComponent<CharacterController>();
+     
     }
 
     void Update()
@@ -44,6 +48,19 @@ public class PlayerMovement : MonoBehaviour
                 moveDirection.y = jumpSpeed;
             }
         }
+        /*
+        // Walking Animation
+        if (Input.GetKey(KeyCode.W))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("condition, 1");
+        }
+        // Anim is IDLE
+        if (Input.GetKeyUp(Keycode.w))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("condition", 0);
+        } */
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
