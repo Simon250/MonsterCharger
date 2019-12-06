@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
-
+    Animator anim;
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     {
         Camera main;
         characterController = GetComponent<CharacterController>();
-     
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -48,19 +48,20 @@ public class PlayerMovement : MonoBehaviour
                 moveDirection.y = jumpSpeed;
             }
         }
-        /*
+
+       
         // Walking Animation
-        if (Input.GetKey(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             moveDirection = new Vector3(0, 0, 1);
-            anim.SetInteger("condition, 1");
+            anim.SetInteger("condition", 2);
         }
         // Anim is IDLE
-        if (Input.GetKeyUp(Keycode.w))
+        if (Input.GetKeyUp(KeyCode.W))
         {
             moveDirection = new Vector3(0, 0, 1);
             anim.SetInteger("condition", 0);
-        } */
+        }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
