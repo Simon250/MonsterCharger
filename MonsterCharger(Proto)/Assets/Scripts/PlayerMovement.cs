@@ -62,6 +62,19 @@ public class PlayerMovement : MonoBehaviour
             moveDirection = new Vector3(0, 0, 1);
             anim.SetInteger("condition", 0);
         }
+        //Anim Attack
+        if (Input.GetMouseButtonDown(0)) {
+            anim.SetInteger("condition", 3);
+        }
+        //Anim reset anim
+        if (Input.GetMouseButtonUp(0)) {
+            if (Input.GetKey(KeyCode.W)){
+                anim.SetInteger("condition", 1);
+            }
+            else {
+                anim.SetInteger("condition", 0);
+            }
+        }
 
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
