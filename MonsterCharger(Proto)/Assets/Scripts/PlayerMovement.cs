@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.W))
         {
             moveDirection = new Vector3(0, 0, 1);
-            anim.SetInteger("condition", 2);
+            anim.SetInteger("condition", 1);
         }
         // Anim is IDLE
         if (Input.GetKeyUp(KeyCode.W))
