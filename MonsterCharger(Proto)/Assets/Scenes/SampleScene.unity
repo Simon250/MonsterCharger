@@ -5218,7 +5218,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 912057cbf0ddb04499442a653010d3e1, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -6057140222963153312, guid: 46c17d472e7b62945bb98b9c3c10bdb3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 46c17d472e7b62945bb98b9c3c10bdb3, type: 3}
 --- !u!1001 &864359966
 PrefabInstance:
@@ -5960,6 +5961,7 @@ GameObject:
   - component: {fileID: 963194231}
   - component: {fileID: 963194229}
   - component: {fileID: 963194230}
+  - component: {fileID: 963194232}
   m_Layer: 0
   m_Name: Main Character
   m_TagString: MainCamera
@@ -6083,6 +6085,25 @@ MonoBehaviour:
   speed: 6
   jumpSpeed: 8
   gravity: 20
+--- !u!95 &963194232
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 46c17d472e7b62945bb98b9c3c10bdb3, type: 3}
+  m_Controller: {fileID: 9100000, guid: c3f49499c80bf614e8f83e069b9fe2b0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &967110044 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4184716620995200, guid: 543ba2233306d00479ef5713d436c12e,
