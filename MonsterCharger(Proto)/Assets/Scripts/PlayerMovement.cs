@@ -64,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         }
         //Anim Attack
         if (Input.GetMouseButtonDown(0)) {
-            anim.SetInteger("condition", 3);
+            anim.SetInteger("condition", 2);
         }
         //Anim reset anim
         if (Input.GetMouseButtonUp(0)) {
