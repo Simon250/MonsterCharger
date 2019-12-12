@@ -6,7 +6,8 @@ public class PlayerMovement : MonoBehaviour
 {
     CharacterController characterController;
     Animator anim;
-    public float speed = 6.0f;
+    public float speed = 3.0f;
+    public float runSpeed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
 
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
             right.Normalize();
 
             moveDirection = forward * Input.GetAxis("Vertical") + right * Input.GetAxis("Horizontal");
-            moveDirection *= speed;
+            
 
             if (Input.GetButton("Jump"))
             {
@@ -49,33 +50,105 @@ public class PlayerMovement : MonoBehaviour
             }
         }
 
-       
+        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0){
+            anim.SetBool("Walking", true);
+        }
+        else {
+            anim.SetBool("Walking", false);
+        }
+
+        
+
         // Walking Animation
         if (Input.GetKeyDown(KeyCode.W))
         {
             moveDirection = new Vector3(0, 0, 1);
-            anim.SetInteger("condition", 1);
+            anim.SetInteger("Mcondition", 1);
         }
         // Anim is IDLE
         if (Input.GetKeyUp(KeyCode.W))
         {
             moveDirection = new Vector3(0, 0, 1);
-            anim.SetInteger("condition", 0);
+            anim.SetInteger("Mcondition", 0);
         }
+
+
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("Mcondition", 2);
+        }
+        // Anim is IDLE
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("Mcondition", 0);
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("Mcondition", 3);
+        }
+        // Anim is IDLE
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("Mcondition", 0);
+        }
+
+
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("Mcondition", 4);
+        }
+        // Anim is IDLE
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            moveDirection = new Vector3(0, 0, 1);
+            anim.SetInteger("Mcondition", 0);
+        }
+
+
+
         //Anim Attack
         if (Input.GetMouseButtonDown(0)) {
-            anim.SetInteger("condition", 2);
+            anim.SetTrigger("Attacking");
         }
         //Anim reset anim
         if (Input.GetMouseButtonUp(0)) {
-            if (Input.GetKey(KeyCode.W)){
-                anim.SetInteger("condition", 1);
-            }
-            else {
-                anim.SetInteger("condition", 0);
-            }
+            anim.ResetTrigger("Attacking");
         }
 
+
+        if (Input.GetKeyDown(KeyCode.LeftShift)) {
+            anim.SetBool("Running", true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift)) {
+            anim.SetBool("Running", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftControl))
+        {
+            anim.SetBool("Crouching", true);
+        }
+        if (Input.GetKeyUp(KeyCode.LeftControl))
+        {
+            anim.SetBool("Crouching", false);
+        }
+
+
+        if (anim.GetBool("Running")){
+            moveDirection *= runSpeed;
+        }
+        else { 
+            moveDirection *= speed;
+        }
+        
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied
         // as an acceleration (ms^-2)
