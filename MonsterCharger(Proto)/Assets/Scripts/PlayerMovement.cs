@@ -124,6 +124,15 @@ public class PlayerMovement : MonoBehaviour
             anim.ResetTrigger("Attacking");
         }
 
+        if (Input.GetMouseButtonDown(1)) {
+            anim.SetBool("Blocking", true);
+        }
+
+        if (Input.GetMouseButtonUp(1))
+        {
+            anim.SetBool("Blocking", false);
+        }
+
 
         if (Input.GetKeyDown(KeyCode.LeftShift)) {
             anim.SetBool("Running", true);
